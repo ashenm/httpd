@@ -1,0 +1,18 @@
+{
+  "name": "seize",
+  "version": "1.0.0",
+  "description": "A webresource downloader",
+  "author": "Ashen Gunaratne <mail@ashenm.ml> (https://www.ashenm.ml/)",
+  "homepage": "https://github.com/ashenm/seize",
+  "bugs": {
+    "url": "https://github.com/ashenm/seize/issues",
+    "email": "hosting@ashenm.ml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ashenm/seize.git"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}

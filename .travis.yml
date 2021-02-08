@@ -1,0 +1,19 @@
+dist:
+  focal
+
+language:
+  node_js
+
+node_js:
+  lts/*
+
+env:
+  - PORT=8080
+
+script:
+  - make build
+  - make run &
+  - sleep 5s
+  - make test
+
+# vim: set expandtab shiftwidth=2 syntax=yaml:

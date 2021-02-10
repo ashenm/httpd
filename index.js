@@ -12,6 +12,8 @@ const seize = require('./controllers/seize');
 
 require('express')()
   .set('trust proxy', true)
+  .set('view engine', 'pug')
+  .set('views', './views')
   .use('/seize', seize)
   .use('/', root)
   .listen(process.env.PORT || 8080);

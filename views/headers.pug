@@ -1,0 +1,33 @@
+doctype html
+html(lang="en")
+  head
+    title="Request Headers"
+    style.
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      tr:nth-child(2n+1) {
+        background-color: #EEE;
+      }
+
+      td {
+        padding: 1ch;
+      }
+
+      td.key {
+        text-transform: capitalize;
+        white-space: pre;
+      }
+  body
+    table
+      thead
+      tbody
+        each value, key in headers
+          tr
+            td(class="key")=key
+            td(class="value")=value
+      tfoot
+
+// vim: set expandtab shiftwidth=2 syntax=pug:

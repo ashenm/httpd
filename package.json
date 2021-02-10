@@ -1,31 +1,24 @@
 {
-
   "name": "httpd",
   "version": "1.0.0",
-
   "author": "Ashen Gunaratne <mail@ashenm.ml> (https://www.ashenm.ml/)",
   "homepage": "https://github.com/ashenm/seize",
-
   "bugs": {
     "url": "https://github.com/ashenm/httpd/issues",
     "email": "hosting@ashenm.ml"
   },
-
   "repository": {
     "type": "git",
     "url": "https://github.com/ashenm/httpd.git"
   },
-
   "scripts": {
     "lint": "make lint",
     "start": "make run",
     "test": "make test"
   },
-
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pug": "^3.0.0"
   },
-
   "__vim__": "/* vim: set expandtab shiftwidth=2 syntax=json: */"
-
 }

@@ -28,6 +28,10 @@ router.all('/error', function (request, response) {
   response.status(500).json(dispatch.failure(500));
 });
 
+router.all('/headers', function (request, response) {
+  response.status(200).json(request.headers);
+});
+
 router.use(function (request, response, next) {
   response.status(404).json(dispatch.failure(404));
 });

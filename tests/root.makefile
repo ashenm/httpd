@@ -8,6 +8,7 @@ before_script:
 script: before_script
 	curl --silent --show-error --fail-early --output /dev/null --url 'http://localhost:${PORT}/'
 	curl --silent --show-error --fail-early --output /dev/null --url 'http://localhost:${PORT}/echo'
+	curl --silent --show-error --fail-early --output /dev/null --url 'http://localhost:${PORT}/headers'
 
 .PHONY: clean
 clean:

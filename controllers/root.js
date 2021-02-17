@@ -39,6 +39,10 @@ router.all('/headers', function (request, response) {
 
 });
 
+router.get('/ip', function (request, response) {
+  response.status(200).json({ ip: request.ip });
+});
+
 router.use(function (request, response, next) {
   response.status(404).json(dispatch.failure(404));
 });

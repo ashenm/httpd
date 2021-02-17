@@ -20,5 +20,8 @@
     "express": "^4.17.1",
     "pug": "^3.0.0"
   },
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  },
   "__vim__": "/* vim: set expandtab shiftwidth=2 syntax=json: */"
 }

@@ -43,6 +43,10 @@ router.get('/ip', function (request, response) {
   response.status(200).json({ ip: request.ip });
 });
 
+router.get('/socket', function (request, response) {
+  response.status(200).json({ address: request.socket.remoteAddress, family: request.socket.remoteFamily, port: request.socket.remotePort });
+});
+
 router.use(function (request, response, next) {
   response.status(404).json(dispatch.failure(404));
 });

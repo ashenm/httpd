@@ -1,5 +1,15 @@
 include tests/config.makefile
 
+.DEFAULT_GOAL=help
+
+.PHONY: test
+assess: ## test service
+	$(MAKE) --directory tests all
+
+.PHONY: build
+build: ## build service
+	true
+
 .PHONY: help
 .SILENT: help
 help: ## show make targets
@@ -12,9 +22,5 @@ install: ## install dependencies
 .PHONY: run
 run: ## spawn service
 	node index.js
-
-.PHONY: test
-test: ## assess service
-	$(MAKE) --directory tests all
 
 # vim: set noexpandtab shiftwidth=4 syntax=make:

@@ -7,6 +7,7 @@
  *
  */
 
+const github = require('./controllers/github');
 const root = require('./controllers/root');
 const seize = require('./controllers/seize');
 
@@ -15,6 +16,7 @@ require('express')()
   .set('view engine', 'pug')
   .set('views', './views')
   .use('/seize', seize)
+  .use('/github', github)
   .use('/', root)
   .listen(process.env.PORT || 8080);
 

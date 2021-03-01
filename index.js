@@ -10,6 +10,7 @@
 const github = require('./controllers/github');
 const root = require('./controllers/root');
 const seize = require('./controllers/seize');
+const stash = require('./controllers/stash');
 const authenticate = require('./controllers/authenticate');
 
 require('express')()
@@ -19,6 +20,7 @@ require('express')()
   .use('/seize', seize)
   .use('/github', github)
   .use('/authenticate', authenticate)
+  .use('/stash', stash)
   .use('/', root)
   .listen(process.env.PORT || 8080);
 

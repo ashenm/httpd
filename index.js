@@ -12,6 +12,7 @@ const root = require('./controllers/root');
 const seize = require('./controllers/seize');
 const stash = require('./controllers/stash');
 const authenticate = require('./controllers/authenticate');
+const devtools = require('./controllers/dev-tools');
 
 require('express')()
   .set('trust proxy', true)
@@ -20,6 +21,7 @@ require('express')()
   .use('/seize', seize)
   .use('/github', github)
   .use('/authenticate', authenticate)
+  .use('/dev-tools', devtools)
   .use('/stash', stash)
   .use('/', root)
   .listen(process.env.PORT || 8080);

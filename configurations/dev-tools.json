@@ -1,0 +1,74 @@
+{
+  "created": {
+    "statusCode": 201
+  },
+  "accepted": {
+    "statusCode": 202
+  },
+  "bad-request": {
+    "statusCode": 400
+  },
+  "unauthorized": {
+    "statusCode": 401
+  },
+  "payment-required": {
+    "statusCode": 402
+  },
+  "forbidden": {
+    "statusCode": 403
+  },
+  "not-found": {
+    "statusCode": 404
+  },
+  "method-not-allowed": {
+    "statusCode": 405
+  },
+  "not-acceptable": {
+    "statusCode": 406
+  },
+  "proxy-authentication-required": {
+    "statusCode": 407
+  },
+  "request-timeout": {
+    "statusCode": 408
+  },
+  "conflict": {
+    "statusCode": 409
+  },
+  "gone": {
+    "statusCode": 410
+  },
+  "internal-server-error": {
+    "statusCode": 500
+  },
+  "not-implemented": {
+    "statusCode": 501
+  },
+  "bad-gateway": {
+    "statusCode": 502
+  },
+  "service-unavailable": {
+    "statusCode": 503
+  },
+  "gateway-timeout": {
+    "statusCode": 504
+  },
+  "http-version-not-supported": {
+    "statusCode": 505
+  },
+  "variant-also-negotiates": {
+    "statusCode": 506
+  },
+  "insufficient-storage": {
+    "statusCode": 507
+  },
+  "loop-detected": {
+    "statusCode": 508
+  },
+  "not-extended": {
+    "statusCode": 510
+  },
+  "network-authentication-required": {
+    "statusCode": 511
+  }
+}

@@ -10,24 +10,13 @@
 
 const express = require('express');
 const router = express.Router();
+const configuration = require('../configurations/dev-tools');
 const dispatch = require('../utilities/status');
 
 router.use(express.json());
 
-router.all('/', function (request, response) {
-  response.status(200).json(dispatch.success(200, request.body));
-});
-
-router.all('/bad-request', function (request, response) {
-  response.status(400).json(dispatch.failure(400, request.body));
-});
-
-router.all('/not-found', function (request, response) {
-  response.status(404).json(dispatch.failure(404, request.body));
-});
-
-router.all('/internal-server-error', function (request, response) {
-  response.status(500).json(dispatch.failure(404, request.body));
+router.all('/:status', function (request, response, next) {
+  request.params.status in configuration ? response.status(configuration[request.params.status].statusCode).json(dispatch.success(configuration[request.params.status].statusCode, request.body)) : next();
 });
 
 module.exports = router;

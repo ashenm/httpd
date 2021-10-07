@@ -39,7 +39,7 @@ router.all('/headers', function (request, response) {
 
 });
 
-router.get('/ip', function (request, response) {
+router.all('/ip', function (request, response) {
   response.status(200).json({ ip: request.ip });
 });
 

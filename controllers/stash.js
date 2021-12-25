@@ -8,10 +8,13 @@
  *
  */
 
+const axios = require('axios');
+const FormData = require('form-data');
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const router = express.Router();
+const util = require('util');
 
 const dispatch = require('../utilities/status');
 
@@ -52,8 +55,11 @@ router.all('/', function (request, response, next) {
     return next();
   }
 
+  const form = new FormData();
   const timestamp = Number(new Date()).toString();
   const extension = express.static.mime.extension(request.is()) || 'bin';
+
+  const filename = `${timestamp}.${extension}`;
 
   if (request.is('application/json')) {
     payload = JSON.stringify(request.body, null, 4);
@@ -63,8 +69,15 @@ router.all('/', function (request, response, next) {
     payload = request.body;
   }
 
-  fs.writeFile(path.join(DIRECTORY_PREFIX, `${timestamp}.${extension}`), payload,
-    regulate.bind({ response: response, intent: { filename: `${timestamp}.${extension}` } }));
+  form.append('content', payload);
+  form.append('filename', filename);
+  form.append('filetype', extension);
+  form.append('channels', process.env.SLACK_CHANNEL);
+
+  util.callbackify(() => Promise.all([
+    fs.promises.writeFile(path.join(DIRECTORY_PREFIX, `${timestamp}.${extension}`), payload),
+    axios.post('https://slack.com/api/files.upload', form.getBuffer(), { headers: { ...form.getHeaders(), Authorization: `Bearer ${process.env.SLACK_TOKEN}` } })
+  ]))(regulate.bind({ response: response, intent: { filename } }));
 
 });
 

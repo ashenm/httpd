@@ -1,0 +1,11 @@
+{
+  "name": "httpd",
+  "repository": "https:///github.com/ashenm/httpd",
+
+  "website": "https://ashenm.herokuapp.com/",
+  "success_url": "/echo",
+
+  "environments": {
+    "review": {}
+  }
+}

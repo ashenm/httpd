@@ -6,6 +6,9 @@
   "success_url": "/echo",
 
   "environments": {
-    "review": {}
+    "review": {
+      "addons": [],
+      "env": {}
+    }
   }
 }

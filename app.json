@@ -7,8 +7,7 @@
 
   "environments": {
     "review": {
-      "addons": [],
-      "env": {}
+      "stack": "heroku-20"
     }
   }
 }

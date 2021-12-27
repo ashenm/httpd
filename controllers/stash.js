@@ -41,6 +41,25 @@ const sanitise = function filterDirectoryListing (error, payload) {
 
 };
 
+const notify = function dispatchSlackNotification (filename, payload) {
+
+  if (!process.env.SLACK_CHANNEL) {
+    return;
+  }
+
+  const form = new FormData();
+
+  form.append('content', payload);
+  form.append('filename', filename);
+  form.append('filetype', path.extname(filename).replace(/^\./, ''));
+  form.append('channels', process.env.SLACK_CHANNEL);
+
+  return axios.post('https://slack.com/api/files.upload', form.getBuffer(), {
+    headers: { ...form.getHeaders(), Authorization: `Bearer ${process.env.SLACK_TOKEN}` }
+  });
+
+};
+
 router.use(express.json(), express.raw(), express.text(), express.urlencoded({ extended: true }));
 
 router.get('/', function (request, response) {
@@ -55,7 +74,6 @@ router.all('/', function (request, response, next) {
     return next();
   }
 
-  const form = new FormData();
   const timestamp = Number(new Date()).toString();
   const extension = express.static.mime.extension(request.is()) || 'bin';
 
@@ -69,14 +87,9 @@ router.all('/', function (request, response, next) {
     payload = request.body;
   }
 
-  form.append('content', payload);
-  form.append('filename', filename);
-  form.append('filetype', extension);
-  form.append('channels', process.env.SLACK_CHANNEL);
-
   util.callbackify(() => Promise.all([
-    fs.promises.writeFile(path.join(DIRECTORY_PREFIX, `${timestamp}.${extension}`), payload),
-    axios.post('https://slack.com/api/files.upload', form.getBuffer(), { headers: { ...form.getHeaders(), Authorization: `Bearer ${process.env.SLACK_TOKEN}` } })
+    fs.promises.writeFile(path.join(DIRECTORY_PREFIX, `${filename}`), payload),
+    notify(filename, payload)
   ]))(regulate.bind({ response: response, intent: { filename } }));
 
 });

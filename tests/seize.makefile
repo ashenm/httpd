@@ -5,7 +5,7 @@ before_script:
 	mkdir -p /tmp/mock-server/seize
 	touch /tmp/mock-server/seize/small.bin
 	dd bs=4k count=128k status=progress if=/dev/zero of=/tmp/mock-server/seize/large.txt
-	$(CURDIR)/http-server --port $(shell expr $(PORT) + 1) /tmp/mock-server/seize 1> /dev/null & \
+	npx http-server --port $(shell expr $(PORT) + 1) /tmp/mock-server/seize 1> /dev/null & \
 	  echo $$! | tee /tmp/mock-server/seize/server.pid && sleep 5s
 	curl --silent --show-error --fail --output /dev/null --url 'http://localhost:$(shell expr $(PORT) + 1)/'
 

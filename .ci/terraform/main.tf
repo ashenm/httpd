@@ -20,7 +20,7 @@ resource "heroku_app" "production" {
   name                  = "ashenm"
   region                = "us"
   sensitive_config_vars = var.secrets
-  stack                 = "heroku-18"
+  stack                 = "heroku-20"
 }
 
 resource "heroku_pipeline" "pipeline" {

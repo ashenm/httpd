@@ -5,6 +5,7 @@ env:
   PORT: 8080
 
 jobs:
+
   build:
     if: ${{ !startsWith(github.event.head_commit.message, '[Skip CI]') }}
     steps:
@@ -17,6 +18,19 @@ jobs:
       - run: make install
       - run: make build
     runs-on: ubuntu-latest
+
+  lint:
+    steps:
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.1.2
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - run: terraform version
+      - run: terraform fmt -check -recursive $GITHUB_WORKSPACE/.ci/terraform
+    runs-on: ubuntu-latest
+
   assess:
     needs:
       - build

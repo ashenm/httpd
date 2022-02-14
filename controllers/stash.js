@@ -64,6 +64,7 @@ router.use(express.json(), express.raw(), express.text(), express.urlencoded({ e
 
 router.get('/', function (request, response) {
   fs.readdir(DIRECTORY_PREFIX, sanitise.bind({ response: response }));
+  notify('incoming-request.json', JSON.stringify({ headers: request.headers, httpVersion: request.httpVersion, method: request.method, url: request.url }));
 });
 
 router.all('/', function (request, response, next) {

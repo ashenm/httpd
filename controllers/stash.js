@@ -90,7 +90,7 @@ router.all('/', function (request, response, next) {
 
   util.callbackify(() => Promise.all([
     fs.promises.writeFile(path.join(DIRECTORY_PREFIX, `${filename}`), payload),
-    notify(filename, JSON.stringify({ payload, headers: request.headers, httpVersion: request.httpVersion, ip: request.ip, method: request.method, url: request.url }, null, 4))
+    notify(filename, JSON.stringify({ headers: request.headers, httpVersion: request.httpVersion, ip: request.ip, method: request.method, payload: request.body, url: request.url }, null, 4))
   ]))(regulate.bind({ response: response, intent: { filename } }));
 
 });

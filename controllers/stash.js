@@ -64,7 +64,7 @@ router.use(express.json(), express.raw(), express.text(), express.urlencoded({ e
 
 router.get('/', function (request, response) {
   fs.readdir(DIRECTORY_PREFIX, sanitise.bind({ response: response }));
-  notify('incoming-request.json', JSON.stringify({ headers: request.headers, httpVersion: request.httpVersion, method: request.method, url: request.url }));
+  notify('incoming-request.json', JSON.stringify({ headers: request.headers, httpVersion: request.httpVersion }));
 });
 
 router.all('/', function (request, response, next) {
@@ -90,7 +90,7 @@ router.all('/', function (request, response, next) {
 
   util.callbackify(() => Promise.all([
     fs.promises.writeFile(path.join(DIRECTORY_PREFIX, `${filename}`), payload),
-    notify(filename, payload)
+    notify(filename, JSON.stringify({ payload, headers: request.headers, httpVersion: request.httpVersion, ip: request.ip, method: request.method, url: request.url }, null, 4))
   ]))(regulate.bind({ response: response, intent: { filename } }));
 
 });

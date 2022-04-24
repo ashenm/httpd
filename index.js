@@ -7,6 +7,7 @@
  *
  */
 
+const helmet = require('helmet');
 const github = require('./controllers/github');
 const root = require('./controllers/root');
 const seize = require('./controllers/seize');
@@ -15,6 +16,7 @@ const authenticate = require('./controllers/authenticate');
 const devtools = require('./controllers/dev-tools');
 
 require('express')()
+  .use(helmet())
   .set('trust proxy', true)
   .set('view engine', 'pug')
   .set('views', './views')

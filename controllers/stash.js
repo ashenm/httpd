@@ -14,9 +14,11 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const router = express.Router();
+const stringify = require('json-stringify-safe');
 const util = require('util');
 
 const dispatch = require('../utilities/status');
+const logger = require('../utilities/logger')('stash');
 
 const DIRECTORY_PREFIX = path.join('public', 'stash');
 
@@ -102,7 +104,11 @@ router.use(function (request, response, next) {
 });
 
 router.use(function (error, request, response, next) {
-  console.error(error); // TODO standardise error logging
+  logger.error({
+    message: "Uncaught internal server error",
+    event: { raw: stringify(error) }
+  });
+
   response.status(500).json(dispatch.failure(500));
 });
 

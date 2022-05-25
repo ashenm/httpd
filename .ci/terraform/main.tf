@@ -22,13 +22,3 @@ resource "heroku_app" "production" {
   sensitive_config_vars = var.secrets
   stack                 = "heroku-20"
 }
-
-resource "heroku_pipeline" "pipeline" {
-  name = "httpd"
-}
-
-resource "heroku_pipeline_coupling" "production" {
-  app      = heroku_app.production.id
-  pipeline = heroku_pipeline.pipeline.id
-  stage    = "production"
-}

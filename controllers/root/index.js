@@ -23,7 +23,6 @@ router.get('/', function (_request, response) {
 });
 
 router.all('/echo', require('./echo'));
-router.all('/error', require('./error'));
 router.all('/headers', require('./headers'));
 router.all('/ip', require('./ip'));
 router.get('/socket', require('./socket'));

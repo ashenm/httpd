@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`root/socket Should dispatch response body with valid arity 1`] = `
+Array [
+  Array [
+    Object {
+      "address": "test-socket-remote-address",
+      "family": "test-socket-remote-family",
+      "port": "test-socket-remote-port",
+    },
+  ],
+]
+`;
+
+exports[`root/socket Should dispatch response status with valid arity 1`] = `
+Array [
+  Array [
+    200,
+  ],
+]
+`;

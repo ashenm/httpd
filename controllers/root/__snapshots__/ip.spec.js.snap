@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`root/ip Should dispatch response body with valid arity 1`] = `
+Array [
+  Array [
+    Object {
+      "ip": "test-ip-address",
+    },
+  ],
+]
+`;
+
+exports[`root/ip Should dispatch response status with valid arity 1`] = `
+Array [
+  Array [
+    200,
+  ],
+]
+`;

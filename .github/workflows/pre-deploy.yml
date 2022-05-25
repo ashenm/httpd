@@ -42,7 +42,8 @@ jobs:
           cache: 'npm'
           node-version: 14.x
       - run: make install
-      - run: npx jest --ci --collect-coverage
+      - run: npx jest --version
+      - run: npx jest --ci --collect-coverage src/
     runs-on: ubuntu-latest
 
   e2e:

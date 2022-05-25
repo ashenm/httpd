@@ -1,10 +1,10 @@
-include tests/config.makefile
+include integration-tests/config.makefile
 
 .DEFAULT_GOAL=help
 
 .PHONY: test
 assess: ## test service
-	$(MAKE) --directory tests all
+	$(MAKE) --directory integration-tests all
 
 .PHONY: build
 build: ## build service
@@ -21,6 +21,6 @@ install: ## install dependencies
 
 .PHONY: run
 run: ## spawn service
-	node index.js
+	node src/index.js
 
 # vim: set noexpandtab shiftwidth=4 syntax=make:

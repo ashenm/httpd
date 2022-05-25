@@ -31,9 +31,22 @@ jobs:
       - run: terraform fmt -check -recursive $GITHUB_WORKSPACE/.ci/terraform
     runs-on: ubuntu-latest
 
-  assess:
+  unit-tests:
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+      - run: make install
+      - run: npx jest --ci --collect-coverage
+    runs-on: ubuntu-latest
+
+  e2e:
     needs:
       - build
+      - unit-tests
     steps:
       - uses: actions/checkout@v2
         with:

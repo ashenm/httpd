@@ -10,8 +10,10 @@
 
 const express = require('express');
 const router = express.Router();
+const stringify = require('json-stringify-safe');
 
 const dispatch = require('../utilities/status');
+const logger = require('../utilities/logger')('root');
 
 router.use(express.static('public'));
 router.use(express.json(), express.raw(), express.text(), express.urlencoded({ extended: true }));
@@ -52,7 +54,11 @@ router.use(function (request, response, next) {
 });
 
 router.use(function (error, request, response, next) {
-  console.error(error); // TODO standardise error logging
+  logger.error({
+    message: "Uncaught internal server error",
+    event: { raw: stringify(error) }
+  });
+
   response.status(500).json(dispatch.failure(500));
 });
 

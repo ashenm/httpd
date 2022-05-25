@@ -13,9 +13,11 @@ const querystring = require('querystring');
 const express = require('express');
 const jwt = require('express-jwt');
 const router = express.Router();
+const stringify = require('json-stringify-safe');
 
 const dispatch = require('../utilities/status');
 const authentication = require('../utilities/authentication');
+const logger = require('../utilities/logger')('authenticate');
 
 const decline = function reciprocateGatewayFailure (error) {
   return this.response.status(502).json(dispatch.failure(502));
@@ -63,7 +65,11 @@ router.use(function (error, request, response, next) {
     return;
   }
 
-  console.error(error); // TODO standardise error logging
+  logger.error({
+    message: "Failed to execute OAuth handshake",
+    event: { raw: stringify(error) },
+  });
+
   response.status(500).json(dispatch.failure(500));
 
 });

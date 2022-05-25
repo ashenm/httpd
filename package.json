@@ -30,7 +30,8 @@
     "pug": "3.0.2"
   },
   "devDependencies": {
-    "http-server": "14.0.0"
+    "http-server": "14.0.0",
+    "jest": "28.1.0"
   },
   "__vim__": "/* vim: set expandtab shiftwidth=2 syntax=json: */"
 }

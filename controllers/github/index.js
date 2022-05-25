@@ -13,9 +13,9 @@ const https = require('https');
 const express = require('express');
 const router = express.Router();
 
-const dispatch = require('../utilities/status');
+const dispatch = require('../../utilities/status');
 
-const decline = function reciprocateGatewayFailure (error) {
+const decline = function reciprocateGatewayFailure (_error) {
   return this.response.status(502).json(dispatch.failure(502));
 };
 
@@ -30,7 +30,7 @@ const regulate = function reciprocateGatewayResponse (stream) {
 
 };
 
-router.use(function (request, response, next) {
+router.use(function (request, response, _next) {
 
   let remote;
 

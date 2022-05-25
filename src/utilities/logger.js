@@ -11,7 +11,7 @@
 module.exports = function logger (controller) {
   const context = {
     controller,
-    environment: process.env.ENVIRONMENT // eslint-disable-line no-process-env
+    environment: process.env.ENVIRONMENT || 'development' // eslint-disable-line no-process-env
   };
 
   const log = function (level, intent) {

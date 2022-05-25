@@ -15,7 +15,7 @@ provider "heroku" {
 resource "heroku_app" "staging" {
   acm                   = false
   buildpacks            = ["heroku/nodejs"]
-  config_vars           = var.configuration
+  config_vars           = merge(var.configuration, { ENVIRONMENT : "staging" })
   internal_routing      = false
   name                  = "starscream"
   region                = "us"
@@ -26,7 +26,7 @@ resource "heroku_app" "staging" {
 resource "heroku_app" "production" {
   acm                   = false
   buildpacks            = ["heroku/nodejs"]
-  config_vars           = var.configuration
+  config_vars           = merge(var.configuration, { ENVIRONMENT : "production" })
   internal_routing      = false
   name                  = "ashenm"
   region                = "us"

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`root/headers.js text/html Should attempt to render response view with valid arity 1`] = `
+Array [
+  Array [
+    "headers",
+    Object {
+      "headers": Object {
+        "X-Key": "x-test-value",
+      },
+    },
+  ],
+]
+`;
+
+exports[`root/headers.js text/html Should attempt to resolve content negotiation selection with valid arity 1`] = `
+Array [
+  Array [
+    "text/html",
+  ],
+]
+`;
+
+exports[`root/headers.js text/plain Should dispatch response body with valid arity 1`] = `
+Array [
+  Array [
+    Object {
+      "X-Key": "x-test-value",
+    },
+  ],
+]
+`;
+
+exports[`root/headers.js text/plain Should dispatch response status with valid arity 1`] = `
+Array [
+  Array [
+    200,
+  ],
+]
+`;

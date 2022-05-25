@@ -15,11 +15,11 @@ const jwt = require('express-jwt');
 const router = express.Router();
 const stringify = require('json-stringify-safe');
 
-const dispatch = require('../utilities/status');
-const authentication = require('../utilities/authentication');
-const logger = require('../utilities/logger')('authenticate');
+const dispatch = require('../../utilities/status');
+const authentication = require('../../utilities/authentication');
+const logger = require('../../utilities/logger')('authenticate');
 
-const decline = function reciprocateGatewayFailure (error) {
+const decline = function reciprocateGatewayFailure (_error) {
   return this.response.status(502).json(dispatch.failure(502));
 };
 
@@ -30,7 +30,7 @@ const regulate = function reciprocateGatewayResponse (stream) {
 
 router.use(express.json());
 
-router.get('/', authentication.checkJwt, function (request, response) {
+router.get('/', authentication.checkJwt, function (_request, response) {
   response.status(200).json(dispatch.success(200));
 });
 
@@ -54,11 +54,11 @@ router.post('/', function (request, response) {
 
 });
 
-router.use(function (request, response, next) {
+router.use(function (_request, response, next) {
   response.status(400).json(dispatch.failure(400));
 });
 
-router.use(function (error, request, response, next) {
+router.use(function (error, _request, response, _next) {
 
   if (error instanceof jwt.UnauthorizedError) {
     response.status(error.status).json(dispatch.failure(error.status, error.inner.message));

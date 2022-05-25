@@ -10,8 +10,8 @@
 
 const express = require('express');
 const router = express.Router();
-const configuration = require('../configurations/dev-tools');
-const dispatch = require('../utilities/status');
+const configuration = require('../../configurations/dev-tools');
+const dispatch = require('../../utilities/status');
 
 router.use(express.json());
 

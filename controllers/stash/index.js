@@ -17,8 +17,8 @@ const router = express.Router();
 const stringify = require('json-stringify-safe');
 const util = require('util');
 
-const dispatch = require('../utilities/status');
-const logger = require('../utilities/logger')('stash');
+const dispatch = require('../../utilities/status');
+const logger = require('../../utilities/logger')('stash');
 
 const DIRECTORY_PREFIX = path.join('public', 'stash');
 
@@ -99,17 +99,19 @@ router.all('/', function (request, response, next) {
 
 router.use(express.static(DIRECTORY_PREFIX));
 
-router.use(function (request, response, next) {
+router.use(function (_request, response, next) {
   response.status(400).json(dispatch.failure(400));
 });
 
-router.use(function (error, request, response, next) {
+router.use(function (error, _request, response, _next) {
+
   logger.error({
     message: "Uncaught internal server error",
     event: { raw: stringify(error) }
   });
 
   response.status(500).json(dispatch.failure(500));
+
 });
 
 module.exports = router;

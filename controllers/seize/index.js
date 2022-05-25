@@ -11,7 +11,7 @@
 const path = require('path');
 const router = require('express').Router();
 
-const dispatch = require('../utilities/status');
+const dispatch = require('../../utilities/status');
 
 const requesters = {
   'http:': require('http'),

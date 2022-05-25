@@ -15,8 +15,17 @@ module.exports = function logger (controller) {
   };
 
   const log = function (level, intent) {
-    /* eslint-disable-next-line no-console */
-    console.log({ level, message: intent.message, context: this, event: intent.event });
+    const parameters = { context: this };
+
+    if (intent.event) {
+      parameters.event = intent.event;
+    }
+
+    if (intent.error instanceof Error) {
+      parameters.error = { name: intent.error.name, message: intent.error.message, stack: intent.error.stack };
+    }
+
+    console.log({ ...parameters, level, message: intent.message }); // eslint-disable-line no-console
   };
 
   return {

@@ -19,6 +19,10 @@ router.all('/:status', function (request, response, next) {
   request.params.status in configuration ? response.status(configuration[request.params.status].statusCode).json(dispatch.success(configuration[request.params.status].statusCode, request.body)) : next();
 });
 
+router.all('/timeout', function (_request, _response, _next) {
+  return;
+});
+
 module.exports = router;
 
 /* vim: set expandtab shiftwidth=2 syntax=javascript: */

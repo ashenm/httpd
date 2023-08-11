@@ -9,6 +9,7 @@
 
 const helmet = require('helmet');
 const github = require('./controllers/github');
+const path = require('path');
 const root = require('./controllers/root');
 const seize = require('./controllers/seize');
 const stash = require('./controllers/stash');
@@ -18,8 +19,8 @@ const devtools = require('./controllers/dev-tools');
 require('express')()
   .use(helmet())
   .set('trust proxy', true)
+  .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'pug')
-  .set('views', './views')
   .use('/seize', seize)
   .use('/github', github)
   .use('/authenticate', authenticate)

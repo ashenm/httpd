@@ -1,40 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`root/echo application/json Should attempt to resolve default response body with valid arity 1`] = `
-Array [
-  Array [
+[
+  [
     200,
   ],
 ]
 `;
 
 exports[`root/echo application/json Should dispatch response body with valid arity 1`] = `
-Array [
-  Array [
+[
+  [
     "test-dispatch-success-value",
   ],
 ]
 `;
 
 exports[`root/echo application/json Should dispatch response status with valid arity 1`] = `
-Array [
-  Array [
+[
+  [
     200,
   ],
 ]
 `;
 
 exports[`root/echo text/plain Should dispatch response body with valid arity 1`] = `
-Array [
-  Array [
+[
+  [
     "test-request-body",
   ],
 ]
 `;
 
 exports[`root/echo text/plain Should dispatch response status with valid arity 1`] = `
-Array [
-  Array [
+[
+  [
     200,
   ],
 ]

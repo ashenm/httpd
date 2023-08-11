@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Function failure Should return well-formed response when message explicitly specified 1`] = `
-Object {
-  "error": Object {
+{
+  "error": {
     "code": 400,
     "message": "Boo!",
   },
@@ -10,8 +10,8 @@ Object {
 `;
 
 exports[`Function failure Should return well-formed response with a default status text when message unspecified 1`] = `
-Object {
-  "error": Object {
+{
+  "error": {
     "code": 400,
     "message": "Bad Request",
   },
@@ -19,8 +19,8 @@ Object {
 `;
 
 exports[`Function success Should return well-formed response when message explicitly specified 1`] = `
-Object {
-  "status": Object {
+{
+  "status": {
     "code": 200,
     "message": "Hooray!",
   },
@@ -28,8 +28,8 @@ Object {
 `;
 
 exports[`Function success Should return well-formed response with a default status text when message unspecified 1`] = `
-Object {
-  "status": Object {
+{
+  "status": {
     "code": 200,
     "message": "OK",
   },

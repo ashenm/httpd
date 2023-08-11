@@ -10,7 +10,6 @@
 
 const express = require('express');
 const router = express.Router();
-const stringify = require('json-stringify-safe');
 
 const dispatch = require('../../utilities/status');
 const logger = require('../../utilities/logger')('root');

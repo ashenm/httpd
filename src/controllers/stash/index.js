@@ -20,7 +20,7 @@ const util = require('util');
 const dispatch = require('../../utilities/status');
 const logger = require('../../utilities/logger')('stash');
 
-const DIRECTORY_PREFIX = path.join('public', 'stash');
+const DIRECTORY_PREFIX = path.join(require.main.path, 'public', 'stash');
 
 const regulate = function reciprocateFileWriteStatus (error) {
   return error ? this.response.status(500).json(dispatch.failure(500))
@@ -32,6 +32,10 @@ const sanitise = function filterDirectoryListing (error, payload) {
   const nodes = [];
 
   if (error) {
+    logger.error({
+      message: "Failed to execute directory listing",
+      event: { raw: stringify(error) }
+    });
     return this.response.status(500).json(dispatch.failure(500));
   }
 

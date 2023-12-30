@@ -4,7 +4,7 @@
  * https://github.com/ashenm/httpd
  *
  * Ashen Gunaratne
- * mail@ashenm.ml
+ * mail@ashenm.dev
  *
  */
 

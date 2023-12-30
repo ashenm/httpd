@@ -1,11 +1,11 @@
 {
   "name": "httpd",
   "version": "1.0.0",
-  "author": "Ashen Gunaratne <mail@ashenm.ml> (https://www.ashenm.ml/)",
-  "homepage": "https://github.com/ashenm/seize",
+  "author": "Ashen Gunaratne <mail@ashenm.dev> (https://www.ashenm.dev/)",
+  "homepage": "https://github.com/ashenm/httpd",
   "bugs": {
     "url": "https://github.com/ashenm/httpd/issues",
-    "email": "hosting@ashenm.ml"
+    "email": "mail@ashenm.dev"
   },
   "repository": {
     "type": "git",

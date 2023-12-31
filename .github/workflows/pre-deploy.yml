@@ -51,6 +51,25 @@ jobs:
       - run: npx jest --ci --collect-coverage src/
     runs-on: ubuntu-latest
 
+  deploy-staging:
+    needs:
+      - build
+      - unit-tests
+    environment:
+      name: starscream
+      url: https://starscream.herokuapp.com/
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - uses: akhileshns/heroku-deploy@v3.12.14
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: starscream
+          heroku_email: mail@ashenm.dev
+          dontautocreate: true
+    runs-on: ubuntu-latest
+
   e2e:
     needs:
       - build

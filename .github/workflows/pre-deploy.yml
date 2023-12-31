@@ -87,4 +87,19 @@ jobs:
       - run: make assess
     runs-on: ubuntu-latest
 
+  slack:
+    needs:
+      - e2e
+      - lint
+      - deploy-staging
+    if: ${{ always() }}
+    steps:
+      - uses: Gamesight/slack-workflow-status@master
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          channel: "#github"
+          name: "GitHub Workflow"
+    runs-on: ubuntu-latest
+
 # vim: set expandtab shiftwidth=2 syntax=yaml:

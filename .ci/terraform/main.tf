@@ -20,7 +20,7 @@ resource "heroku_app" "staging" {
   name                  = "starscream"
   region                = "us"
   sensitive_config_vars = var.secrets
-  stack                 = "heroku-20"
+  stack                 = "heroku-24"
 }
 
 resource "heroku_app" "production" {
@@ -31,5 +31,5 @@ resource "heroku_app" "production" {
   name                  = "ashenm"
   region                = "us"
   sensitive_config_vars = var.secrets
-  stack                 = "heroku-20"
+  stack                 = "heroku-24"
 }

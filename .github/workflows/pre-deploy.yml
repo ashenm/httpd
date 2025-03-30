@@ -62,6 +62,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           persist-credentials: false
+      - run: curl https://cli-assets.heroku.com/install.sh | sh
       - uses: akhileshns/heroku-deploy@v3.12.14
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}

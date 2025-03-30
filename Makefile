@@ -17,7 +17,7 @@ help: ## show make targets
 
 .PHONY: install
 install: ## install dependencies
-	npm install --also dev
+	npm install --include=dev
 
 .PHONY: run
 run: ## spawn service

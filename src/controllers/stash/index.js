@@ -13,6 +13,7 @@ const FormData = require('form-data');
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const mime = require('mime-types');
 const router = express.Router();
 const stringify = require('json-stringify-safe');
 const util = require('util');
@@ -82,7 +83,7 @@ router.all('/', function (request, response, next) {
   }
 
   const timestamp = Number(new Date()).toString();
-  const extension = express.static.mime.extension(request.is()) || 'bin';
+  const extension = mime.extension(request.is()) || 'bin';
 
   const filename = `${timestamp}.${extension}`;
 
